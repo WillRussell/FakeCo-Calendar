@@ -8,10 +8,9 @@
   <title>AI Exercise</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="app.css">
 
-
-<link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src='https://code.jquery.com/jquery-1.11.0.min.js'></script>
 
 
@@ -22,9 +21,9 @@
 <!-- Fixed navbar -->
 <nav class="hello navbar navbar-default navbar-fixed-top">
   <div class="container">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">FakeCo Meetings</a>
-    </div>
+  <div class="navbar-left company-name">
+    <strong>FakeCo Meetings</strong>
+  </div>
     <div ng-app ng-controller="Ctrl2">
       <div class="navbar-right time" ng-controller="Ctrl2">
         Current time: <span my-current-time="format"></span>
@@ -33,7 +32,30 @@
   </div>
 </nav>
 
+<div class="well well-lg">
+  <div class="container">
+    <h5>8:00-9:00</h5>
+    <h2>Coffee Meeting</h2>
+    <h4>Conference Room</h4>
+    <h5>Room #5</h5>
+  </div>
+</div>
 
+<div ng-controller="accordionCtrl">
+  <accordion close-others="oneAtATime">
+
+    <accordion-group heading="{{group.title}}" ng-repeat="group in groups">
+      {{group.content}}
+    </accordion-group>
+</div>
+
+<div ng-controller="DataCtrl">
+  <pre ng-model="data">
+   {{events.list[0].start_time}}
+  </pre>
+
+
+</div>
 
 
   <script src="bower_components/angular/angular.js"></script>

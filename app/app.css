@@ -1,6 +1,35 @@
 /* app css stylesheet */
 
-.time {
-  padding-top: 15px;
+body {
+  background: url(/tiny_grid.png);
 }
 
+.company-name{
+  padding-top: 15px;
+  color: white;
+  font-size: 30px;
+}
+
+.time {
+  padding-top: 15px;
+  color: white;
+  font-size: 25px;
+}
+
+.navbar {
+position: relative;
+min-height: 80px;
+margin-bottom: 2px;
+border: 1px solid transparent;
+}
+.navbar-default {
+background-color: rgb(238,116,90);
+}
+
+.navbar-default .navbar-brand {
+color: #FFF;
+}
+
+.well {
+  background-color: rgba(255,255,255,.5);
+}
