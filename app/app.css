@@ -36,5 +36,22 @@ color: #FFF;
 
 .schedule {
     border: 1px solid;
-    margin: 5px;
+}
+
+.btn {
+color: white;
+background-color: #AC3319;
+border-color: #D45135;
+}
+
+.btn:hover {
+    color: white;
+    background-color: #D88573;
+    border-color: #D45135;
+}
+
+.btn:focus {
+color: white;
+background-color: #AC3319;
+border-color: #D45135;
 }
