@@ -10,10 +10,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="app.css">
-
 <script src='https://code.jquery.com/jquery-1.11.0.min.js'></script>
-
-
 </head>
 
 <body>
@@ -32,6 +29,7 @@
   </div>
 </nav>
 
+<!-- temporary placeholder code - replace w/angular directive -->
 <div class="well well-lg">
   <div class="container">
     <h5>8:00-9:00</h5>
@@ -41,20 +39,17 @@
   </div>
 </div>
 
-<div ng-controller="accordionCtrl">
-  <accordion close-others="oneAtATime">
-
-    <accordion-group heading="{{group.title}}" ng-repeat="group in groups">
-      {{group.content}}
-    </accordion-group>
-</div>
-
-<div ng-controller="DataCtrl">
-  <pre ng-model="data">
-   {{events.list[0].start_time}}
-  </pre>
-
-
+<!-- display current day's meeting schedule -->
+<div class="row">
+  <div ng-controller="eventsCtrl">
+    <ul>
+        <li class="schedule col-md-3" ng-repeat="event in meetings">
+            <h3>{{event.name}}</a></h3>
+            <h4>{{event.location}}</h4>
+            <a href="#">{{event.start_time}} - {{event.end_time}}</a>
+        </li>
+    </ul>
+  </div>
 </div>
 
 

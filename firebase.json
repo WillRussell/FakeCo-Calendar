@@ -1,0 +1,9 @@
+{
+  "firebase": "flickering-inferno-4625",
+  "public": ".",
+  "ignore": [
+    "firebase.json",
+    "**/.*",
+    "**/node_modules/**"
+  ]
+}
