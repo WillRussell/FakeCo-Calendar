@@ -6,6 +6,7 @@ body {
   color: #63828E;
 }
 
+/*navigation styles*/
 .company-name{
   padding-top: 15px;
   color: white;
@@ -28,13 +29,16 @@ border: 1px solid transparent;
 .navbar-default {
 background-color: #93C1D3;
 }
+/*end navigation styles*/
 
+/*top section 'current meeting' styles*/
 .well {
   background-color: rgba(255,255,255,.5);
 }
 
-.schedule {
-    font-family: 'Roboto', sans-serif;
+.current-meeting-name{
+  color: #E9775F;
+  font-weight: 700;
 }
 
 .btn, .btn:focus {
@@ -49,14 +53,31 @@ border-color: #3F7B92;
   background-color: #649CB2;
 }
 
+.current-list {
+  display: inline-block;
+  *display: inline;
+  margin: 20px;
+  margin-top: 35px;
+}
+
+.current-attendees {
+text-align: center;
+}
+
+img {
+  height: 110px;
+  width: 110px;
+  border-radius: 50%;
+}
+/*end top section current meeting styles*/
 
 /*off-canvas css animation for meeting participants*/
 #participants-slider {
          position: absolute;
          top: auto;
          bottom: auto;
-         width: 15.625em;
-         right: -15.625em;
+         width: 60em;
+         right: -60em;
          height: auto;
          -webkit-transform: translate(0px, 0px);
         -moz-transform: translate(0px, 0px);
@@ -69,18 +90,18 @@ border-color: #3F7B92;
         transition: 0.25s ease;
 }
 
-
  #participants-slider.active {
-        -webkit-transform: translate(-15.625em, 0px);
-        -moz-transform: translate(-15.625em, 0px);
-        -o-transform: translate(-15.625em, 0px);
-        -ms-transform: translate(-15.625em, 0px);
-        transform: translate(-15.625em, 0px);
+        -webkit-transform: translate(-60em, 0px);
+        -moz-transform: translate(-60em, 0px);
+        -o-transform: translate(-60em, 0px);
+        -ms-transform: translate(-60em, 0px);
+        transform: translate(-60em, 0px);
 }
+/*end off-canvas styles*/
 
-.current-meeting-name{
-  color: #E9775F;
-  font-weight: 700;
+/*styles for 'upcoming meetings' section*/
+.schedule {
+    font-family: 'Roboto', sans-serif;
 }
 
 .event-name {
@@ -152,7 +173,7 @@ border-color: #3F7B92;
   width: 100%;
 }
 
-/* CSS Triangles */
+/* css triangles on bottom of tooltip */
 .wrapper .tooltip:after {
   border-left: solid transparent 10px;
   border-right: solid transparent 10px;
@@ -174,6 +195,7 @@ border-color: #3F7B92;
   -o-transform: translateY(0px);
   transform: translateY(0px);
 }
+/*end styles for 'upcoming meetings' section*/
 
 
 /*angular-ui overide for unwanted route changes*/

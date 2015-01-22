@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en" ng-app="app" class="no-js">
 
 <head>
@@ -8,86 +7,94 @@
   <title>AI Exercise</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- bootstrap -->
   <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- my style sheet -->
   <link rel="stylesheet" href="app.css">
-<script src='https://code.jquery.com/jquery-1.11.0.min.js'></script>
-
-<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,800,700' rel='stylesheet' type='text/css'>
-<link href='http://fonts.googleapis.com/css?family=Roboto:400,700,900' rel='stylesheet' type='text/css'>
+  <!-- jQuery, google webfonts -->
+  <script src='https://code.jquery.com/jquery-1.11.0.min.js'></script>
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,800,700' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,900' rel='stylesheet' type='text/css'>
 </head>
 
 <body>
-
-<!-- Fixed navbar -->
-<nav class="hello navbar navbar-default navbar-fixed-top">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <div class="navbar-left company-name">
-        <strong>FakeCo Meetings</strong>
+  <!-- navigation -->
+  <nav class="hello navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <div class="navbar-left company-name">
+          <strong>FakeCo Meetings</strong>
+        </div>
       </div>
-    </div>
-
-    <div id="navbar" class="navbar-collapse collapse">
-      <div ng-app ng-controller="Ctrl2">
-        <div class="navbar-right time" ng-controller="Ctrl2">
-          Current time: <span my-current-time="format"></span>
+      <div id="navbar" class="navbar-collapse collapse">
+        <div ng-app ng-controller="Ctrl2">
+          <div class="navbar-right time" ng-controller="Ctrl2">
+            Current time: <span my-current-time="format"></span>
+          </div>
         </div>
       </div>
     </div>
+  </nav>
+
+  <!-- top 'current meeting' section  -->
+  <div class="well well-lg">
+    <div ng-controller="eventsCtrl">
+      <!-- offcanvas slider -->
+      <div id="participants-slider">
+        <div ng-repeat="event in meetings | limitTo:1">
+          <ul class="list-unstyled current-list" ng-repeat="participant in event.attendees">
+          <li class="attendee-picture"><img src="{{participant.photo}}" alt="" /></li>
+          <li class="current-attendees">{{participant.name}}</li>
+          </ul>
+        </div>
+      </div>
+      <!-- current/next meeting details -->
+      <div class="container">
+        <div ng-repeat="event in meetings | limitTo:1">
+          <h5>Current/next meeting:</h5>
+          <h2 class="current-meeting-name">{{event.name}}</h2>
+          <h4 class="current-meeting-location">{{event.location}}</h4>
+          <h5 class="current-meeting-time">{{event.start_time | dateToISO | date:'shortTime'}} - {{event.end_time | dateToISO | date:'shortTime'}}</h5>
+        </div>
+        <!-- button for slider toggle -->
+        <p class="toggle-participants">
+          <a class="btn btn-primary btn-md " href="#" role="button">Who's participating?</a>
+        </p>
+      </div>
+    </div>
   </div>
-</nav>
 
-<!-- temporary placeholder code - replace w/angular directive -->
-<div class="well well-lg">
-
-  <div id="participants-slider">
-    <h3>Names of participants go here</h3>
-  </div>
-
-  <div class="container">
-    <h5>8:00-9:00</h5>
-    <h2 class="current-meeting-name">Coffee Meeting</h2>
-    <h4>Conference Room</h4>
-    <h5>Room #5</h5>
-    <p class="toggle-participants">
-      <a class="btn btn-primary btn-md " href="#" role="button">Who's participating?</a>
-    </p>
-  </div>
-</div>
-
-<!-- display current day's meeting schedule -->
-    <div class="container schedule">
-      <div class="row">
-        <div ng-controller="eventsCtrl">
-          <div class="col-md-4" ng-repeat="event in meetings">
-            <ul class="list-unstyled">
-              <li class="event-name">{{event.name}}</li>
-              <li class="event-time">{{event.start_time | dateToISO | date:'shortTime'}} - {{event.end_time | dateToISO | date:'shortTime'}}</li>
-              <li class="event-location"><strong>Location: </strong>{{event.location}}</li>
-            </ul>
-
-            <div class="wrapper">
-              <a href="#"><h5 class="tooltip-link btn-sm">View attendees</h5></a>
-                <div  ng-repeat="participant in event.attendees">
-
-                  <div class="tooltip">
-                    <ul class="list-unstyled">
-                      <li  ng-repeat="participant in event.attendees">{{participant.name}}</li>
-                    </ul>
-                  </div>
-                </div>
+  <!-- bottom section for upcoming events -->
+  <div class="container schedule">
+    <div class="row">
+      <div ng-controller="eventsCtrl">
+        <div class="col-md-4" ng-repeat="event in meetings">
+          <ul class="list-unstyled">
+            <li class="event-name">{{event.name}}</li>
+            <li class="event-time">{{event.start_time | dateToISO | date:'shortTime'}} - {{event.end_time | dateToISO | date:'shortTime'}}</li>
+            <li class="event-location"><strong>Location: </strong>{{event.location}}</li>
+          </ul>
+          <!-- view attendees hover tooltip thing -->
+          <div class="wrapper">
+            <a href="#"><h5 class="tooltip-link btn-sm">View attendees</h5></a>
+            <div ng-repeat="participant in event.attendees">
+              <div class="tooltip">
+                <ul class="list-unstyled">
+                  <li ng-repeat="participant in event.attendees">{{participant.name}}</li>
+                </ul>
               </div>
             </div>
-
+          </div>
         </div>
       </div>
     </div>
+  </div>
 
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-route/angular-route.js"></script>
