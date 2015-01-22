@@ -2,6 +2,7 @@
 
 body {
   background: url(/tiny_grid.png);
+  overflow-x: hidden;
 }
 
 .company-name{
@@ -55,3 +56,37 @@ color: white;
 background-color: #AC3319;
 border-color: #D45135;
 }
+
+/*off-canvas css animation for meeting participants*/
+
+
+#participants-slider {
+         position: absolute;
+         top: auto;
+         bottom: auto;
+         width: 15.625em;
+         right: -15.625em;
+         height: auto;
+         -webkit-transform: translate(0px, 0px);
+        -moz-transform: translate(0px, 0px);
+        -o-transform: translate(0px, 0px);
+        -ms-transform: translate(0px, 0px);
+        transform: translate(0px, 0px);
+        -webkit-transition: 0.25s ease;
+        -moz-transition: 0.25s ease;
+        -o-transition: 0.25s ease;
+        transition: 0.25s ease;
+}
+
+
+ #participants-slider.active {
+        -webkit-transform: translate(-15.625em, 0px);
+        -moz-transform: translate(-15.625em, 0px);
+        -o-transform: translate(-15.625em, 0px);
+        -ms-transform: translate(-15.625em, 0px);
+        transform: translate(-15.625em, 0px);
+}
+
+
+/*necessary angular-ui overide for unwanted route changes*/
+.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }

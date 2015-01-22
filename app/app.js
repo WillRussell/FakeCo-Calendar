@@ -9,6 +9,14 @@ $http.jsonp(url)
   });
 };
 
+//filter to format date to be more readable
+app.filter('dateToISO', function() {
+  return function(input) {
+    input = new Date(input).toISOString();
+    return input;
+  };
+});
+
 //navbar clock control
 app.controller('Ctrl2', ['$scope', function ($scope) {
   $scope.format = 'h:mm a';
@@ -39,5 +47,8 @@ app.directive("myCurrentTime", function(dateFilter){
     }
 });
 
+  $(".toggle-participants").click(function() {
+      $("#participants-slider").toggleClass("active");
+  });
 
 
