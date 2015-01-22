@@ -2,6 +2,24 @@ var app = angular.module('app', ['ui.bootstrap']);
 
 // hit remote server for meeting data
 function eventsCtrl($scope, $http) {
+
+  // set collapse options for dynamic accordian
+  $scope.oneAtATime = true;
+  $scope.groups = [
+    {
+      title: 'Dynamic Group Header - 1',
+      content: 'Dynamic Group Body - 1'
+    },
+    {
+      title: 'Dynamic Group Header - 2',
+      content: 'Dynamic Group Body - 2'
+    }
+  ];
+  $scope.status = {
+    isFirstOpen: false,
+    isFirstDisabled: false
+  };
+
 var url = "http://fake-co-calendar.herokuapp.com/api/v1/events?callback=JSON_CALLBACK";
 $http.jsonp(url)
   .success(function(data){
