@@ -11,6 +11,9 @@
   <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="app.css">
 <script src='https://code.jquery.com/jquery-1.11.0.min.js'></script>
+
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,800,700' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Roboto:400,700,900' rel='stylesheet' type='text/css'>
 </head>
 
 <body>
@@ -49,7 +52,7 @@
 
   <div class="container">
     <h5>8:00-9:00</h5>
-    <h2>Coffee Meeting</h2>
+    <h2 class="current-meeting-name">Coffee Meeting</h2>
     <h4>Conference Room</h4>
     <h5>Room #5</h5>
     <p class="toggle-participants">
@@ -59,28 +62,29 @@
 </div>
 
 <!-- display current day's meeting schedule -->
-    <div class="container">
+    <div class="container schedule">
       <div class="row">
         <div ng-controller="eventsCtrl">
           <div class="col-md-4" ng-repeat="event in meetings">
             <ul class="list-unstyled">
-              <li>{{event.name}}</li>
-              <li>{{event.location}}</li>
-              <li>{{event.start_time | dateToISO | date:'shortTime'}} - {{event.end_time | dateToISO | date:'shortTime'}}</li>
+              <li class="event-name">{{event.name}}</li>
+              <li class="event-time">{{event.start_time | dateToISO | date:'shortTime'}} - {{event.end_time | dateToISO | date:'shortTime'}}</li>
+              <li class="event-location"><strong>Location: </strong>{{event.location}}</li>
             </ul>
 
-          <div class="col-md-8">
-            <accordion close-others="oneAtATime">
-              <accordion-group heading="{{event.attendees.length}} attendees">
-                <ul class="list-unstyled">
-                    <li  ng-repeat="participant in event.attendees">
-                        <a href="#">{{participant.name}}</a>
-                    </li>
-                </ul>
-              </accordion-group>
-            </accordion>
+            <div class="wrapper">
+              <a href="#"><h5 class="tooltip-link btn-sm">View attendees</h5></a>
+                <div  ng-repeat="participant in event.attendees">
+
+                  <div class="tooltip">
+                    <ul class="list-unstyled">
+                      <li  ng-repeat="participant in event.attendees">{{participant.name}}</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
+
         </div>
       </div>
     </div>
