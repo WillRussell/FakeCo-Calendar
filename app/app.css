@@ -197,6 +197,3 @@ img {
 }
 /*end styles for 'upcoming meetings' section*/
 
-
-/*angular-ui overide for unwanted route changes*/
-.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }

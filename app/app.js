@@ -1,4 +1,4 @@
-var app = angular.module('app', ['ui.bootstrap']);
+var app = angular.module('app', []);
 
 // hit remote server for meeting data
 function eventsCtrl($scope, $http) {
